@@ -1,98 +1,172 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-<link rel="stylesheet" type ="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
 
 
-<script>
+    <script>
 
-let nombres  = ['Jorge','Isabel','Juan','Pedro','Karina','Jose','Arturo','Rogelio','Bertha'];
-
-
-/*
-### F1 Crea una funcion llamada mayusculas que reciba como parámetro un arreglo y convierta todos los nombres a mayusula y los escriba en la consola
-*/
-
-// CREA TU FUNCION mayusculas aqui:
+        let nombres = ['Jorge', 'Isabel', 'Juan', 'Pedro', 'Karina', 'Jose', 'Arturo', 'Rogelio', 'Bertha'];
 
 
+        /*
+        ### F1 Crea una funcion llamada mayusculas que reciba como parámetro un arreglo y convierta todos los nombres a mayusula y los escriba en la consola
+        */
 
-/*
-### F2 Crea una funcion llamada numVocales que reciba como parámetro un arreglo y cuente el numero de vocales de cada elemento y escriba en consola "datos: tiene [x] vocales , para cada elemento del arreglo" 
-*/
+        // CREA TU FUNCION mayusculas aqui:
 
-// CREA TU FUNCION numVocales aqui:
+        function mayusculas(array) {
 
+            let s = "";
 
-/*
-### F3 Crea una funcion llamada numVocalesArr que reciba un arreglo y mande llamar a la funcion numVocales para que escriba la longitud de cada elemento del arreglo." 
-*/
+            for (let i = 0; i < array.length; i++) {
+                s += array[i].toUpperCase() + " ";
+            }
 
-// CREA TU FUNCION numVocalesArr aqui:
+            console.log(s);
 
-
-
-
-
-/* 
-################ OBJETOS ###############
-
-A) Define un objeto tipo "Perro" que reciba 3 parametros
-
-1) Nombre
-2) Color
-3) Raza
+        }
 
 
-B) Crea 3 objectos  con diferentes valores
+        /*
+        ### F2 Crea una funcion llamada numVocales que reciba como parámetro un arreglo y cuente el numero de vocales de cada elemento y escriba en consola "datos: tiene [x] vocales , para cada elemento del arreglo"
+        */
 
-C) Con un console.log escribe el nombre del primer objeto, el color del segundo, y la raza del tercero. Lo puedes hacer en una sola línea o en 3 lineas aparte. 
+        // CREA TU FUNCION numVocales aqui:
 
+        function isVowel(c) {
+            return (c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U' || c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u');
+        }
 
-*****BONUS****
+        function numVocales(array) {
 
-Crea una método en la definición del objeto "Perro" llamado printInfo()  que escriba en consola todas las propiedades del objeto que lo invoca. 
+            let numVocals = 0;
 
-EJ
+            for (let i = 0; i < array.length; i++) {
 
-fido.printInfo();
+                if (isVowel(array[i])) {
+                    numVocals++;
+                }
 
-Deberia escribir en consola
+            }
 
-"Nombre: Fido , De color: Cafe , Raza: Poodle"
-
-
-*/
-
-
-
-/***
- * 
- *        PRUEBA TUS FUNCIONES
- * 
- ***/
-
-// F1
+            return numVocals;
+        }
 
 
-// F2
+        /*
+        ### F3 Crea una funcion llamada numVocalesArr que reciba un arreglo y mande llamar a la funcion numVocales para que escriba la longitud de cada elemento del arreglo."
+        */
+
+        // CREA TU FUNCION numVocalesArr aqui:
+
+        function numVocalesArr(arr) {
+
+            let counter = 0;
+            let nombre = "";
+
+            for (let i = 0; i < arr.length; i++) {
+
+                counter = numVocales(arr[i]);
+
+                nombre += `${arr[i]}: ${counter}  `;
+
+            }
+
+            console.log(nombre);
+
+        }
 
 
-// F3
+        function Perro(nombre, color, raza) {
+            this.nombre = nombre;
+            this.color = color;
+            this.raza = raza;
+        }
+
+        /*
+        ################ OBJETOS ###############
+        
+        A) Define un objeto tipo "Perro" que reciba 3 parametros
+        
+        1) Nombre
+        2) Color
+        3) Raza
+        
+        
+        B) Crea 3 objectos  con diferentes valores
+        
+        C) Con un console.log escribe el nombre del primer objeto, el color del segundo, y la raza del tercero. Lo puedes hacer en una sola línea o en 3 lineas aparte.
+        
+        
+        *****BONUS****
+        
+        Crea una método en la definición del objeto "Perro" llamado printInfo()  que escriba en consola todas las propiedades del objeto que lo invoca.
+        
+        EJ
+        
+        fido.printInfo();
+        
+        Deberia escribir en consola
+        
+        "Nombre: Fido , De color: Cafe , Raza: Poodle"
+        
+        
+        */
+
+        function printInfo(perrito) {
+
+            let s = `Nombre: ${perrito.nombre} , De color: ${perrito.color} , Raza: ${perrito.raza}`;
+
+            console.log(s);
+
+        }
+
+        /***
+         *
+         *        PRUEBA TUS FUNCIONES
+         *
+         ***/
+
+        // F1
+
+        mayusculas(nombres);
+
+
+        // F2
+
+        console.log(numVocales('Alo cOmo'));
+
+        // F3
+        numVocalesArr(nombres);
 
 
 
 
-/***
- * 
- *        PRUEBA TUS OBJETOS
- * 
- ***/
+        /***
+         *
+         *        PRUEBA TUS OBJETOS
+         *
+         ***/
 
 
-</script>
+        var perro1 = new Perro("Titan", "Negro", "chihuahua");
+
+        var perro2 = new Perro("Juan", "Blanco", "Bulldog");
+
+        var perro2 = new Perro("Jeff", "Plateado", "Doberman");
+
+        console.log(perro1.nombre);
+        console.log(perro2.color);
+        console.log(perro1.raza);
+
+        printInfo(perro1);
+
+
+    </script>
 
 </head>
 
